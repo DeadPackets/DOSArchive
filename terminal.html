@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DOSArchive</title>
+	<script src="js/js-dos.js"></script>
+</head>
+<style>
+	#title {
+		color: white;
+		flex: 1;
+		text-align: center;
+		font-family: "Consolas";
+		flex-wrap: wrap;
+	}
+
+	#jsdos {
+		width: 960px;
+		height: 600px;
+	}
+</style>
+
+<body style="background-color: black;">
+	<h1 id="title">DOSArchive Terminal</h1>
+	<p id="title">Interact and Browse Yasser Awad's DOS work using an emulated DOS terminal in your browser!</p>
+	<canvas id="jsdos"></canvas>
+	<button style="position: absolute; right: 1em; top: 1em;" onclick="ci.fullscreen()">Fullscreen</button>
+	<button style="position: absolute; right: 1em; top: 3em;" onclick="resetCache()">Reset Cache</button>
+	<script>
+		function resetCache() {
+			window.indexedDB.databases().then(dbs => {
+				dbs.forEach(db => { window.indexedDB.deleteDatabase(db.name) });
+			});
+		}
+
+		Dos(document.getElementById("jsdos"), {
+			wdosboxUrl: "js/wdosbox.js",
+			cycles: 1000,
+			autolock: false,
+		}).ready(function (fs, main) {
+			fs.extractAll([
+				{ url: "dist/RUN.zip", mountPoint: "/" },
+				{ url: "dist/SCREEN.zip", mountPoint: "/ARCHIVE/SCREEN" },
+				{ url: "dist/SUN.zip", mountPoint: "/ARCHIVE/SUN" },
+				{ url: "dist/ARABART.zip", mountPoint: "/ARCHIVE/ARABART" },
+				{ url: "dist/ARABIC.zip", mountPoint: "/ARCHIVE/ARABIC" },
+				{ url: "dist/EDIT.zip", mountPoint: "/ARCHIVE/EDIT" },
+				{ url: "dist/FORM_X.zip", mountPoint: "/ARCHIVE/FORM_X" },
+				{ url: "dist/KVC.zip", mountPoint: "/ARCHIVE/KVC" },
+				{ url: "dist/NAMES.zip", mountPoint: "/ARCHIVE/NAMES" },
+				{ url: "dist/PESM.zip", mountPoint: "/ARCHIVE/PESM" },
+				{ url: "dist/PORTSAID.zip", mountPoint: "/ARCHIVE/PORTSAID" },
+				{ url: "dist/PROJ.zip", mountPoint: "/ARCHIVE/PROJ" },
+				{ url: "dist/TAHER.zip", mountPoint: "/ARCHIVE/TAHER" },
+				{ url: "dist/WINKEY.zip", mountPoint: "/ARCHIVE/WINKEY" }
+			]).then(function () {
+				main(["-c", "RUN.BAT"]).then(function (ci) {
+					window.ci = ci;
+				});
+			});
+		});
+	</script>
+</body>
+
+</html>
