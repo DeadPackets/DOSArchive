@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>DOSArchive</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?amily=Roboto+Mono&display=swap" rel="stylesheet">
     <script src="js/js-dos.js"></script>
+    <title>DOSArchive</title>
 </head>
 <style>
     #title {
         color: white;
         flex: 1;
         text-align: center;
-        font-family: "Consolas";
+        font-family: 'Roboto Mono', monospace;
         flex-wrap: wrap;
     }
 
@@ -23,10 +28,12 @@
 <body style="background-color: black;">
     <h1 id="title">DOSArchive Interactive</h1>
     <canvas id="jsdos"></canvas>
-    <button style="position: absolute; right: 1em; top: 1em;" onclick="ci.fullscreen()">Fullscreen</button>
-    <button style="position: absolute; right: 1em; top: 3em;" onclick="resetCache()">Reset Cache</button>
-    <button style="position: absolute; right: 1em; top: 5em;" onclick="window.location.reload()">Run Again</button>
-    <button style="position: absolute; right: 1em; top: 7em;" onclick="window.history.back()">Go Back</button>
+    <div class="container-fluid text-center pt-3">
+        <button class="btn btn-lg btn-primary mx-2" onclick="ci.fullscreen()">Fullscreen</button>
+        <button class="btn btn-lg btn-warning mx-2" onclick="resetCache()">Reset Cache</button>
+        <button class="btn btn-lg btn-success mx-2" onclick="window.location.reload()">Run Again</button>
+        <button class="btn btn-lg btn-light mx-2" onclick="window.history.back()">Go Back</button>
+    </div>
     <script>
         function getQueryVariable(variable) {
             var query = window.location.search.substring(1);
@@ -43,6 +50,7 @@
             window.indexedDB.databases().then(dbs => {
                 dbs.forEach(db => { window.indexedDB.deleteDatabase(db.name) });
             });
+            alert('Please refresh to finish clearing the cache.');
         }
 
         Dos(document.getElementById("jsdos"), {

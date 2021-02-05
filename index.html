@@ -5,7 +5,31 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?amily=Roboto+Mono&display=swap" rel="stylesheet">
 	<title>DOSArchive - A collection of Yasser Awad's DOS works</title>
+	<style>
+		body::-webkit-scrollbar {
+			width: 22px;
+			background-color: #333333;
+		}
+
+		body {
+			scrollbar-width: thick;
+			scrollbar-color: #333333;
+		}
+
+		body::-webkit-scrollbar-thumb {
+			border-radius: 16px;
+			border: 1px solid #cccccc;
+			background-color: #000000;
+		}
+
+		.h3,
+		h1 {
+			font-family: 'Roboto Mono', monospace;
+		}
+	</style>
 </head>
 
 <body>
@@ -21,9 +45,15 @@
 					<div class="card">
 						<img src="images/ARABART-DEMO.EXE.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">ARABART - Demo</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">ARABART - Demo</h4>
+							<p class="p-0 m-0 text-muted">Written in 1991</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">First written in 1991 and updated till 1993, Yasser wrote
+								the ARABART library which added Arabic support in the DOS graphic mode which allowed him
+								to create programs that display Arabic in different fonts, colors and styles. The
+								library supports auto-shaping (choosing which letter form to use, ie. connected from the
+								beginning, both sides, or end). This program serves as a demo to showcase all the
+								capabilities of the ARABART library.</p>
 							<a href="run.html?program=ARABART-DEMO.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -32,9 +62,33 @@
 					<div class="card">
 						<img src="images/ARABART-DEMO.EXE.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">ARABART - Editor</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">ARABART - Editor</h4>
+							<p class="p-0 m-0 text-muted">Written in 1991</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">Written alongside the ARABART library, this demo allows
+								users to interactively try out the features of the ARABART library.</p>
+							<table class="table table-dark table-sm">
+								<thead>
+									<tr>
+										<th scope="col">Keypress</th>
+										<th scope="col">Effect</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">SHIFT + 1-4</th>
+										<td>Toggles italics/bold/underline/size.</td>
+									</tr>
+									<tr>
+										<th scope="row">SHIFT + Q,W,E,R</th>
+										<td>Selects between 4 different fonts.</td>
+									</tr>
+									<tr>
+										<th scope="row">SHIFT + C</th>
+										<td>Changes the color of the text.</td>
+									</tr>
+								</tbody>
+							</table>
 							<a href="run.html?program=ARABART-EDITOR.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -43,10 +97,13 @@
 					<div class="card">
 						<img src="images/ARABIC-DEMO.COM.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Arabic Art Demo</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
-							<a href="run.html?program=ARABIC-DEMO.EXE" class="btn btn-primary">Launch</a>
+							<h4 class="card-title m-0">ARABART - Commercial</h4>
+							<p class="p-0 m-0 text-muted">Written in 1991</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">Also alongside the ARABART library, this is the first
+								practical use of the library for a commercial demo. The commercial displays the name of
+								an egyptian computer hardware store along with other animated multi-colored slides.</p>
+							<a href="run.html?program=ARABIC-DEMO.COM" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
 				</div>
@@ -56,9 +113,39 @@
 					<div class="card">
 						<img src="images/DIGI_T.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Digi-Test</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">Digi-Test</h4>
+							<p class="p-0 m-0 text-muted">Written in 1993</p>
+							<p class="pb-1 m-0 text-muted">Language: C++, Assembly</p>
+							<p class="card-text text-justify">This software is a part of Yasser's
+								graduation project which involved the simulation and testing of digital circuits. This
+								software is the GUI of the graduation project, running on DOS. Additionally, this
+								graduation project included a custom made board and interface with the computer in order
+								to analyze, simulate and reveal faulty ICs. Despite still being able to construct and
+								simulate circuits, due to lack of hardware we cannot view the Truth Table generated or
+								analyze the circuit for faults. To see the circuit used in the graduation defense, load
+								the file "KEMYAM".</p>
+							<table class="table table-dark table-sm">
+								<thead>
+									<tr>
+										<th scope="col">Keypress</th>
+										<th scope="col">Effect</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">F10</th>
+										<td>Access the top menus.</td>
+									</tr>
+									<tr>
+										<th scope="row">INS</th>
+										<td>Begin drawing a wire/connector between 2 points.</td>
+									</tr>
+									<tr>
+										<th scope="row">DEL</th>
+										<td>Delete the component currently under the cursor.</td>
+									</tr>
+								</tbody>
+							</table>
 							<a href="run.html?program=DIGI_T-MAIN.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -67,9 +154,31 @@
 					<div class="card">
 						<img src="images/EDIT-EDIT.EXE.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Text Editor - Sample GUI</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">Text Editor - Sample GUI</h4>
+							<p class="p-0 m-0 text-muted">Written in 1993</p>
+							<p class="pb-1 m-0 text-muted">Language: C</p>
+							<p class="card-text text-justify">This text editor was Yasser's
+								interview assignment to join his first company for his first official professional job.
+								The assignment was to write a text editor that was capable of saving/loading, scrolling,
+								having a toggle-able insertion mode, and supporting cursor movement.</p>
+							<table class="table table-dark table-sm">
+								<thead>
+									<tr>
+										<th scope="col">Keypress</th>
+										<th scope="col">Effect</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">F10</th>
+										<td>Access the top menus.</td>
+									</tr>
+									<tr>
+										<th scope="row">INS</th>
+										<td>Toggle text insertion mode.</td>
+									</tr>
+								</tbody>
+							</table>
 							<a href="run.html?program=EDIT-EDIT.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -78,9 +187,30 @@
 					<div class="card">
 						<img src="images/EDIT-EDITOR.EXE.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Text Editor - Demo</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">Text Editor - Demo</h4>
+							<p class="p-0 m-0 text-muted">Written in 1993</p>
+							<p class="pb-1 m-0 text-muted">Language: C</p>
+							<p class="card-text text-justify">This is an alternate windows-inspired version of the same
+								interview assignment that was given to Yasser. It still has all the features as the
+								other text editor, just a different interface.</p>
+							<table class="table table-dark table-sm">
+								<thead>
+									<tr>
+										<th scope="col">Keypress</th>
+										<th scope="col">Effect</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">F10</th>
+										<td>Access the top menus.</td>
+									</tr>
+									<tr>
+										<th scope="row">INS</th>
+										<td>Toggle text insertion mode.</td>
+									</tr>
+								</tbody>
+							</table>
 							<a href="run.html?program=EDIT-EDITOR.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -91,9 +221,14 @@
 					<div class="card">
 						<img src="images/FORM_X.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Formula Solver</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">Formula Solver</h4>
+							<p class="p-0 m-0 text-muted">Written in 1992</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">This formula solver is the result of a paid challenge to
+								write software that could emulate floating point mathematics in Assembly without using
+								the math co-processor capabilities. This was achieved using by using BCD (Binary Coded
+								Decimal) to represent floating point numbers. You can use this software to calculate the
+								results from almost any simple algebric equation.</p>
 							<a href="run.html?program=FORM_X-FORM_X.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -102,10 +237,17 @@
 					<div class="card">
 						<img src="images/KVC.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">KVC - Kemyam Virus Capture</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
-							<a href="run.html?program=KVC-KVC.EXE" class="btn btn-primary">Launch</a>
+							<h4 class="card-title m-0">KVC - Kemyam Virus Capture</h4>
+							<p class="p-0 m-0 text-muted">Written in 1993</p>
+							<p class="pb-1 m-0 text-muted">Language: C, Assembly</p>
+							<p class="card-text text-justify">This software was written as an antivirus for a locally
+								created virus in Egypt called Koko that would wipe infected computers' hard drives. Koko
+								was at the time undetected by any available antiviruses, so Yasser and his colleague
+								Ibrahim wrote this antivirus as a framework with hopes to expand it to include other
+								viruses in the future. To see this software in action, you can run the command
+								<code>KVC.EXE C:</code>
+							<p>
+								<a href="run.html?program=KVC-KVC.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
 				</div>
@@ -113,9 +255,12 @@
 					<div class="card">
 						<img src="images/NAMES.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Kemyam - Staff Names & Splash Screen</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">Kemyam - Group Names & Splash Screen</h4>
+							<p class="p-0 m-0 text-muted">Written in 1993</p>
+							<p class="pb-1 m-0 text-muted">Language: C, Assembly</p>
+							<p class="card-text text-justify">This splash screen was written alongside Yasser's
+								graduation project as a way to introduce the group members in an impressive and
+								eye-catching way.</p>
 							<a href="run.html?program=NAMES-NAMES.COM" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -126,9 +271,11 @@
 					<div class="card">
 						<img src="images/PESM.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Arabic Basmallah Demo</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">Arabic Basmallah Demo</h4>
+							<p class="p-0 m-0 text-muted">Written in 1991</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">Written to demonstrate the capabilities of the ARABART
+								library, this software prints out the Islamic phrase in various styles and colors.</p>
 							<a href="run.html?program=PESM-PESM.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -137,10 +284,14 @@
 					<div class="card">
 						<img src="images/PORTSAID.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Port Said Computer Sytems - Splash Screen</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
-							<a href="run.html?program=KVC-KVC.EXE" class="btn btn-primary">Launch</a>
+							<h4 class="card-title m-0">Port Said Computer Sytems - Splash Screen</h4>
+							<p class="p-0 m-0 text-muted">Written in 1993</p>
+							<p class="pb-1 m-0 text-muted">Language: C, Assembly</p>
+							<p class="card-text text-justify">This software was used as a boot screen for all computers
+								sold by PCS (Portsaid Computer Systems). Yasser gifted this software to the company and
+								in return he got his very first computer mouse, which at the time, was something very
+								new and rare.</p>
+							<a href="run.html?program=PORTSAID-PORTSAID.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
 				</div>
@@ -148,9 +299,12 @@
 					<div class="card">
 						<img src="images/SCREEN.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">Port Said IT Department - Splash Screen</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">Port Said IT Department - Splash Screen</h4>
+							<p class="p-0 m-0 text-muted">Written in 1991</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">Written as a gift during Yasser's internship at Portsaid's
+								Governorate IT Department, this software was used as a screensaver for all the computers
+								at this department.</p>
 							<a href="run.html?program=SCREEN-SCREEN.COM" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -161,9 +315,14 @@
 					<div class="card">
 						<img src="images/SUN.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">The Brave Sun</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">The Brave Sun</h4>
+							<p class="p-0 m-0 text-muted">Written in 1993</p>
+							<p class="pb-1 m-0 text-muted">Language: C, Assembly</p>
+							<p class="card-text text-justify">This software was Yasser's contribution to PC Middle East
+								programming competition for writing Arabic educational software. The software
+								demonstrates many things about the sun, including impressive animations. This
+								application won 3rd place in the competition, earning Yasser a cash prize and enterprise
+								software packages.</p>
 							<a href="run.html?program=SUN-SUN.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -172,9 +331,13 @@
 					<div class="card">
 						<img src="images/TAHER.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">TAHER</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">TAHER</h4>
+							<p class="p-0 m-0 text-muted">Written in 1991</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">As part of a paid job to design software to print lab
+								results for a lab physician, Yasser wrote this software as an extra gift to be displayed
+								as the splash screen for the software, displaying the physician's name in fancy
+								calligraphic Arabic.</p>
 							<a href="run.html?program=TAHER-TAHER.COM" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -183,9 +346,12 @@
 					<div class="card">
 						<img src="images/WINKEY.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h5 class="card-title">WINKEY - Pressable Key Demo</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
+							<h4 class="card-title m-0">WINKEY - Pressable Key Demo</h4>
+							<p class="p-0 m-0 text-muted">Written in 1992</p>
+							<p class="pb-1 m-0 text-muted">Language: Assembly</p>
+							<p class="card-text text-justify">Written as part of what was meant to become a windowing
+								library, this software is a demo of some of the features of the library, such as 3D
+								pop-out buttons with different animations when pressed.</p>
 							<a href="run.html?program=WINKEY-WINKEY.EXE" class="btn btn-primary">Launch</a>
 						</div>
 					</div>
@@ -193,11 +359,14 @@
 			</div>
 		</div>
 		<hr style="border-color: grey;" />
-		<div id="terminal" class="container text-center pt-2 pb-5">
+		<div id="terminal" class="container text-center py-3">
 			<h3>Want to explore these programs interactively?</h3>
 			<p class="h5 text-muted">Click below to get an interactive DOS terminal with the entire archive!</p>
 			<a href="terminal.html" class="btn btn-primary">Go to Terminal</a>
 		</div>
+	</div>
+	<div id="footer" class="container-fluid text-center py-3 alert-dark">
+		<p class="text-muted">Written by Youssef Awad (<a href="https://github.com/DeadPackets">DeadPackets</a>) for my father <a href="https://www.linkedin.com/in/yasser-awad-0a88a35/">Yasser Awad</a>. Code available on Github <a href="https://github.com/DeadPackets/DOSArchive">here</a>.</p>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
