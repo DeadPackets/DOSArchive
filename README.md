@@ -1,6 +1,6 @@
 # DOSArchive
 
-A website dedicating to showcasing my father's (Yasser Awad) DOS programming work from the 90s. You can view the website [here](https://deadpackets.pw/dosarchive/).
+A website dedicating to showcasing my father's (Yasser Awad) DOS programming work from the 90s. You can view the website [here](http://projects.deadpackets.pw/DOSArchive/).
 
 ## How it works
 
