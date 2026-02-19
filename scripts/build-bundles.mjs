@@ -29,19 +29,19 @@ const programs = [
   { id: "arabic-basmallah", folder: "PESM", executable: "PESM.EXE", needsArabart: true },
   { id: "portsaid-cs-splash", folder: "PORTSAID", executable: "PORTSAID.EXE", needsArabart: true },
   { id: "portsaid-it-screensaver", folder: "SCREEN", executable: "SCREEN.COM", needsArabart: true },
-  { id: "brave-sun", folder: "SUN", executable: "SUN.EXE", needsArabart: true },
+  { id: "brave-sun", folder: "SUN", executable: "SUN.EXE", needsArabart: true, cycles: 100 },
   { id: "taher", folder: "TAHER", executable: "TAHER.COM", needsArabart: true },
   { id: "winkey", folder: "WINKEY", executable: "WINKEY.EXE", needsArabart: true },
 ];
 
-function makeDosboxConf(executable, needsArabart) {
+function makeDosboxConf(executable, needsArabart, cycles = 1000) {
   const lines = [
     "[sdl]",
     "fullscreen=false",
     "output=surface",
     "",
     "[cpu]",
-    "cycles=fixed 1000",
+    `cycles=fixed ${cycles}`,
     "",
     "[autoexec]",
     "@echo off",
@@ -113,7 +113,7 @@ async function createBundle(program) {
     archive.pipe(output);
 
     // Add dosbox.conf
-    const conf = makeDosboxConf(program.executable, program.needsArabart);
+    const conf = makeDosboxConf(program.executable, program.needsArabart, program.cycles);
     archive.append(conf, { name: ".jsdos/dosbox.conf" });
 
     // Add program files
