@@ -29,7 +29,7 @@ const programs = [
   { id: "arabic-basmallah", folder: "PESM", executable: "PESM.EXE", needsArabart: true },
   { id: "portsaid-cs-splash", folder: "PORTSAID", executable: "PORTSAID.EXE", needsArabart: true },
   { id: "portsaid-it-screensaver", folder: "SCREEN", executable: "SCREEN.COM", needsArabart: true },
-  { id: "brave-sun", folder: "SUN", executable: "SUN.EXE", needsArabart: true, cycles: 300 },
+  { id: "brave-sun", folder: "SUN", executable: "SUN.EXE", needsArabart: true },
   { id: "taher", folder: "TAHER", executable: "TAHER.COM", needsArabart: true },
   { id: "winkey", folder: "WINKEY", executable: "WINKEY.EXE", needsArabart: true },
 ];
