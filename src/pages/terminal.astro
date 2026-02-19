@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DosPlayer from '../components/DosPlayer.astro';
+
+const base = import.meta.env.BASE_URL;
+const bundleUrl = `${base}/bundles/terminal.jsdos`;
+---
+
+<BaseLayout
+  title="Terminal - DOSArchive"
+  description="An interactive DOS terminal to browse and run all of Yasser Awad's DOS programs."
+  hasEmulator={true}
+>
+  <div class="container">
+    <section class="terminal-header">
+      <h1 class="glow">DOS Terminal</h1>
+      <p class="terminal-desc">
+        Browse the entire archive from an interactive DOS command line.
+        Use <code>DIR</code> to list directories and <code>CD</code> to navigate.
+        Each program folder contains a <code>README.TXT</code> with instructions.
+      </p>
+    </section>
+
+    <section class="terminal-emulator" aria-label="Interactive DOS Terminal">
+      <DosPlayer bundleUrl={bundleUrl} programId="terminal" />
+    </section>
+
+    <section class="terminal-help">
+      <h2>Quick Reference</h2>
+      <div class="help-grid">
+        <div class="help-item">
+          <code>DIR</code>
+          <span>List files in current directory</span>
+        </div>
+        <div class="help-item">
+          <code>CD dirname</code>
+          <span>Change to a directory</span>
+        </div>
+        <div class="help-item">
+          <code>CD \</code>
+          <span>Return to root</span>
+        </div>
+        <div class="help-item">
+          <code>TYPE README.TXT</code>
+          <span>Read program instructions</span>
+        </div>
+        <div class="help-item">
+          <code>CLS</code>
+          <span>Clear the screen</span>
+        </div>
+        <div class="help-item">
+          <code>program.EXE</code>
+          <span>Run a program</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .terminal-header {
+    margin-bottom: 2rem;
+  }
+
+  .terminal-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .terminal-desc {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  .terminal-emulator {
+    margin-bottom: 3rem;
+  }
+
+  .terminal-help {
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+  }
+
+  .terminal-help h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .help-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    padding: 0.5rem 0;
+  }
+
+  .help-item code {
+    flex-shrink: 0;
+    min-width: 160px;
+  }
+</style>

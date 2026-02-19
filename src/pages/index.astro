@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProgramCard from '../components/ProgramCard.astro';
+import SearchFilter from '../components/SearchFilter.astro';
+import { programs } from '../data/programs';
+
+const base = import.meta.env.BASE_URL;
+const yearCounts = programs.reduce((acc, p) => {
+  acc[p.year] = (acc[p.year] || 0) + 1;
+  return acc;
+}, {} as Record<number, number>);
+---
+
+<BaseLayout
+  title="DOSArchive - Yasser Awad's DOS Works"
+  description="A web archive of 15 DOS programs written by Yasser Awad in 1990s Egypt. Run them in your browser."
+>
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-prompt" aria-hidden="true">
+        <span class="hero-path">C:\ARCHIVE&gt;</span>
+        <span class="hero-cmd">dir /w</span>
+        <span class="cursor"></span>
+      </div>
+
+      <h1 class="hero-title glow-strong">DOSArchive</h1>
+
+      <p class="hero-subtitle">
+        A collection of <strong class="text-phosphor">{programs.length} programs</strong> written by
+        <strong>Yasser Awad</strong> in 1990s Egypt.<br />
+        Assembly, C, and C++ &mdash; running in your browser.
+      </p>
+
+      <div class="hero-stats" aria-label="Archive statistics">
+        <div class="stat">
+          <span class="stat-value text-phosphor">{programs.length}</span>
+          <span class="stat-label">Programs</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true">|</div>
+        <div class="stat">
+          <span class="stat-value text-amber">{Object.keys(yearCounts).length}</span>
+          <span class="stat-label">Years</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true">|</div>
+        <div class="stat">
+          <span class="stat-value text-phosphor">1991&ndash;93</span>
+          <span class="stat-label">Era</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <SearchFilter />
+
+    <!-- Program Grid -->
+    <section id="program-grid" class="program-grid" aria-label="Program archive">
+      {programs.map(program => (
+        <ProgramCard program={program} />
+      ))}
+    </section>
+
+    <!-- Terminal CTA -->
+    <section class="terminal-cta">
+      <hr class="dos-separator" />
+      <div class="terminal-cta-inner">
+        <h2>Interactive DOS Terminal</h2>
+        <p class="terminal-cta-text">
+          Browse the entire archive from a real DOS command line.
+          Navigate directories, read READMEs, and run any program.
+        </p>
+        <a href={`${base}/terminal`} class="btn btn-amber">
+          <span aria-hidden="true">&gt;</span> OPEN TERMINAL
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* ── Hero ─────────────────────────────────────── */
+  .hero {
+    text-align: center;
+    padding: 3rem 0 2.5rem;
+  }
+
+  .hero-prompt {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .hero-path {
+    color: var(--color-text-muted);
+  }
+
+  .hero-cmd {
+    color: var(--color-phosphor-dim);
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    letter-spacing: 0.06em;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    font-family: var(--font-display);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .stat-sep {
+    color: var(--color-border-bright);
+    font-size: 1.2rem;
+    align-self: center;
+  }
+
+  /* ── Terminal CTA ────────────────────────────── */
+  .terminal-cta {
+    padding-bottom: 1rem;
+  }
+
+  .terminal-cta-inner {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .terminal-cta-inner h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .terminal-cta-text {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+  }
+</style>

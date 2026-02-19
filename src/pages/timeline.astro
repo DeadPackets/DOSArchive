@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TimelineEntry from '../components/TimelineEntry.astro';
+import { programs, getYears, getProgramsByYear } from '../data/programs';
+
+const years = getYears();
+---
+
+<BaseLayout
+  title="Timeline - DOSArchive"
+  description="A chronological view of Yasser Awad's DOS programs from 1991 to 1993."
+>
+  <div class="container">
+    <section class="timeline-header">
+      <h1 class="glow">Timeline</h1>
+      <p class="timeline-subtitle">
+        Three years of DOS programming in Egypt &mdash; from Assembly libraries to award-winning software.
+      </p>
+    </section>
+
+    <div class="timeline">
+      {years.map(year => (
+        <TimelineEntry year={year} programs={getProgramsByYear(year)} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .timeline-header {
+    margin-bottom: 3rem;
+  }
+
+  .timeline-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-subtitle {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    max-width: 520px;
+  }
+
+  .timeline {
+    padding-bottom: 2rem;
+  }
+</style>

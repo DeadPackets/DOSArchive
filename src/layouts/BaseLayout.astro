@@ -1,0 +1,75 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import '../styles/crt.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  hasEmulator?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/DOSArchive/images/arabart-demo.png',
+  hasEmulator = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={imageURL} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:site_name" content="DOSArchive" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={imageURL} />
+
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" type="image/x-icon" href={`${import.meta.env.BASE_URL}/favicon.ico`} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- js-dos v8 (only on emulator pages) -->
+  {hasEmulator && (
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css" />
+    <script is:inline src="https://v8.js-dos.com/latest/js-dos.js"></script>
+  )}
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <Header />
+
+  <main id="main-content" class="page-content">
+    <slot />
+  </main>
+
+  <Footer />
+
+  <!-- CRT Scanline Overlay -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+</body>
+</html>

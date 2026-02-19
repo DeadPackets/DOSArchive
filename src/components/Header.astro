@@ -1,0 +1,191 @@
+---
+const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'Archive', href: `${base}` },
+  { label: 'Timeline', href: `${base}/timeline` },
+  { label: 'Terminal', href: `${base}/terminal` },
+  { label: 'About', href: `${base}/about` },
+];
+
+function isActive(href: string): boolean {
+  const normalized = currentPath.replace(/\/$/, '');
+  const normalizedHref = href.replace(/\/$/, '');
+  if (normalizedHref === base.replace(/\/$/, '')) {
+    return normalized === normalizedHref;
+  }
+  return normalized.startsWith(normalizedHref);
+}
+---
+
+<header class="site-header" role="banner">
+  <div class="header-inner container">
+    <a href={base} class="header-brand" aria-label="DOSArchive home">
+      <span class="header-prompt" aria-hidden="true">C:\&gt;</span>
+      <span class="header-title">DOSArchive</span>
+    </a>
+
+    <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="header-nav" id="main-nav" aria-label="Main navigation">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class:list={['nav-link', { 'nav-link--active': isActive(item.href) }]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--header-height);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 2rem;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .header-prompt {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .header-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-phosphor);
+    text-shadow: var(--glow-sm);
+    letter-spacing: 0.04em;
+  }
+
+  .header-brand:hover .header-title {
+    text-shadow: var(--glow-md);
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-link:hover {
+    color: var(--color-phosphor);
+    border-color: var(--color-border);
+    text-shadow: var(--glow-sm);
+  }
+
+  .nav-link--active {
+    color: var(--color-phosphor);
+    border-color: var(--color-phosphor-dim);
+    background: rgba(51, 255, 51, 0.04);
+    text-shadow: var(--glow-sm);
+  }
+
+  /* ── Mobile Toggle ──── */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: 8px 6px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--color-phosphor);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .mobile-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+  .mobile-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  @media (max-width: 640px) {
+    .mobile-toggle {
+      display: flex;
+    }
+
+    .header-nav {
+      display: none;
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.5rem;
+    }
+
+    .header-nav.open {
+      display: flex;
+    }
+
+    .nav-link {
+      padding: 0.6rem 1rem;
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav?.classList.toggle('open');
+  });
+</script>

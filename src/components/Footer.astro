@@ -1,0 +1,76 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner container">
+    <div class="footer-separator" aria-hidden="true"></div>
+    <div class="footer-content">
+      <p class="footer-credit">
+        Written by <a href="https://github.com/DeadPackets" target="_blank" rel="noopener">Youssef Awad</a> for my father
+        <a href="https://www.linkedin.com/in/yasser-awad-0a88a35/" target="_blank" rel="noopener">Yasser Awad</a>
+      </p>
+      <p class="footer-links">
+        <a href="https://github.com/DeadPackets/DOSArchive" target="_blank" rel="noopener">Source on GitHub</a>
+        <span aria-hidden="true">|</span>
+        <span>MIT License</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 0 0 2rem;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+  }
+
+  .footer-separator {
+    height: 1px;
+    background: var(--color-border);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-content {
+    text-align: center;
+  }
+
+  .footer-credit {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .footer-credit a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .footer-credit a:hover {
+    color: var(--color-phosphor);
+  }
+
+  .footer-links {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .footer-links a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-phosphor);
+  }
+</style>

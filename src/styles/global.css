@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════════
+   DOSArchive — Global Styles
+   Design: CRT Terminal / Digital Archaeology
+   ═══════════════════════════════════════════════════ */
+
+/* ── Design Tokens ─────────────────────────────── */
+:root {
+  --color-bg: #050505;
+  --color-surface: #0a0a0a;
+  --color-card: #0d0d0d;
+  --color-border: #1a1a1a;
+  --color-border-bright: #2a2a2a;
+
+  --color-phosphor: #33ff33;
+  --color-phosphor-dim: #1a8c1a;
+  --color-phosphor-bright: #66ff66;
+  --color-amber: #ffb000;
+  --color-amber-dim: #996a00;
+  --color-red: #ff4444;
+
+  --color-text: #b0b0b0;
+  --color-text-bright: #e0e0e0;
+  --color-text-muted: #555555;
+
+  --font-display: 'VT323', monospace;
+  --font-body: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --max-width: 1200px;
+  --header-height: 56px;
+
+  --glow-sm: 0 0 4px rgba(51, 255, 51, 0.4);
+  --glow-md: 0 0 8px rgba(51, 255, 51, 0.3), 0 0 16px rgba(51, 255, 51, 0.1);
+  --glow-lg: 0 0 12px rgba(51, 255, 51, 0.4), 0 0 24px rgba(51, 255, 51, 0.15), 0 0 48px rgba(51, 255, 51, 0.05);
+  --glow-amber: 0 0 8px rgba(255, 176, 0, 0.3), 0 0 16px rgba(255, 176, 0, 0.1);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Reset ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--color-phosphor-dim) var(--color-surface);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-phosphor-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-phosphor);
+}
+
+/* ── Selection ──────────────────────────────────── */
+::selection {
+  background: var(--color-phosphor);
+  color: var(--color-bg);
+}
+
+/* ── Typography ─────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-phosphor);
+  text-shadow: var(--glow-sm);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-phosphor);
+  text-decoration: none;
+  transition: text-shadow 0.2s ease, color 0.2s ease;
+}
+
+a:hover {
+  text-shadow: var(--glow-sm);
+  color: var(--color-phosphor-bright);
+}
+
+strong {
+  color: var(--color-text-bright);
+}
+
+code {
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+  font-size: 0.85em;
+  color: var(--color-amber);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+/* ── Layout ─────────────────────────────────────── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.page-content {
+  padding-top: calc(var(--header-height) + 2rem);
+  padding-bottom: 4rem;
+  min-height: 100vh;
+}
+
+/* ── Program Grid ───────────────────────────────── */
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 960px) {
+  .program-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .program-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Buttons ────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--color-phosphor-dim);
+  background: transparent;
+  color: var(--color-phosphor);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--color-phosphor);
+  color: var(--color-bg);
+  box-shadow: var(--glow-md);
+  text-shadow: none;
+}
+
+.btn-amber {
+  border-color: var(--color-amber-dim);
+  color: var(--color-amber);
+}
+
+.btn-amber:hover {
+  background: var(--color-amber);
+  color: var(--color-bg);
+  box-shadow: var(--glow-amber);
+}
+
+.btn-sm {
+  font-size: 0.95rem;
+  padding: 0.35rem 0.85rem;
+}
+
+/* ── Badges ─────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  padding: 0.1rem 0.6rem;
+  border: 1px solid;
+  letter-spacing: 0.03em;
+}
+
+.badge-year {
+  border-color: var(--color-amber-dim);
+  color: var(--color-amber);
+}
+
+.badge-lang {
+  border-color: var(--color-phosphor-dim);
+  color: var(--color-phosphor);
+}
+
+.badge-category {
+  border-color: var(--color-border-bright);
+  color: var(--color-text-muted);
+}
+
+/* ── Skip Link (a11y) ───────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--color-phosphor);
+  color: var(--color-bg);
+  padding: 0.5rem 1rem;
+  z-index: 10000;
+  font-family: var(--font-body);
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* ── Focus Indicators ───────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-phosphor);
+  outline-offset: 2px;
+}
+
+/* ── Utility ────────────────────────────────────── */
+.text-phosphor { color: var(--color-phosphor); }
+.text-amber { color: var(--color-amber); }
+.text-muted { color: var(--color-text-muted); }
+.text-center { text-align: center; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ── Responsive ─────────────────────────────────── */
+@media (max-width: 768px) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.5rem; }
+  .container { padding: 0 1rem; }
+}

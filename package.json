@@ -1,0 +1,18 @@
+{
+  "name": "dosarchive",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "A web archive of Yasser Awad's DOS programs from the 1990s",
+  "scripts": {
+    "dev": "node scripts/build-bundles.mjs && astro dev",
+    "build": "node scripts/build-bundles.mjs && astro build",
+    "preview": "astro preview",
+    "bundles": "node scripts/build-bundles.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.4.0"
+  },
+  "devDependencies": {
+    "archiver": "^7.0.1"
+  }
+}

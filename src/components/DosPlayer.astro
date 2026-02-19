@@ -1,0 +1,87 @@
+---
+import CrtBezel from './CrtBezel.astro';
+
+interface Props {
+  bundleUrl: string;
+  programId: string;
+}
+
+const { bundleUrl, programId } = Astro.props;
+---
+
+<div class="dos-player-wrap">
+  <CrtBezel>
+    <div
+      class="dos-container"
+      id={`dos-${programId}`}
+      data-bundle-url={bundleUrl}
+    ></div>
+  </CrtBezel>
+
+  <div class="dos-controls">
+    <button class="btn btn-sm" id={`reset-${programId}`}>
+      <span aria-hidden="true">&gt;</span> RESET CACHE
+    </button>
+    <button class="btn btn-sm" onclick="window.location.reload()">
+      <span aria-hidden="true">&gt;</span> RUN AGAIN
+    </button>
+  </div>
+</div>
+
+<style>
+  .dos-player-wrap {
+    margin: 0 auto;
+    max-width: 960px;
+  }
+
+  .dos-container {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .dos-controls {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+</style>
+
+<script is:inline define:vars={{ programId, bundleUrl }}>
+  (function() {
+    function initPlayer() {
+      var el = document.getElementById('dos-' + programId);
+      if (!el) return;
+      if (typeof Dos === 'undefined') {
+        setTimeout(initPlayer, 200);
+        return;
+      }
+      Dos(el, {
+        url: bundleUrl,
+        noSocialLinks: true,
+      });
+    }
+
+    // Reset cache button
+    var resetBtn = document.getElementById('reset-' + programId);
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        if (window.indexedDB && window.indexedDB.databases) {
+          window.indexedDB.databases().then(function(dbs) {
+            dbs.forEach(function(db) {
+              window.indexedDB.deleteDatabase(db.name);
+            });
+            alert('Cache cleared. Refresh to reload.');
+          });
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPlayer);
+    } else {
+      initPlayer();
+    }
+  })();
+</script>
