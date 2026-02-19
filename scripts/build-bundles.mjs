@@ -45,6 +45,8 @@ function makeDosboxConf(executable, needsArabart) {
     "",
     "[autoexec]",
     "@echo off",
+    "mount c .",
+    "c:",
   ];
 
   if (needsArabart) {
@@ -69,6 +71,8 @@ function makeTerminalDosboxConf() {
     "",
     "[autoexec]",
     "@echo off",
+    "mount c .",
+    "c:",
     "cd ARABART",
     "ARABART.EXE > NUL",
     "cd \\",
