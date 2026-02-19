@@ -18,7 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { program, prev, next } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const bundleUrl = `${base}/bundles/${program.id}.jsdos`;
+const bundleUrl = `${base}/bundles/${program.id}.jsdos?v=${Date.now()}`;
 ---
 
 <BaseLayout

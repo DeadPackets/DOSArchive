@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DosPlayer from '../components/DosPlayer.astro';
 
 const base = import.meta.env.BASE_URL;
-const bundleUrl = `${base}/bundles/terminal.jsdos`;
+const bundleUrl = `${base}/bundles/terminal.jsdos?v=${Date.now()}`;
 ---
 
 <BaseLayout
