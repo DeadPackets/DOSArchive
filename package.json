@@ -10,7 +10,7 @@
     "bundles": "node scripts/build-bundles.mjs"
   },
   "dependencies": {
-    "astro": "^5.4.0"
+    "astro": "^6.1.6"
   },
   "devDependencies": {
     "archiver": "^7.0.1"
